@@ -1,0 +1,314 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Contacto - ConexiónPV</title>
+    <link rel="icon" href="images/logo.png" type="image/png" />
+    <style>
+      html {
+        background-color: #022359;
+      }
+      body {
+        margin: 0;
+        font-family: "Segoe UI", Arial, sans-serif;
+        background: #f7f9fc;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+      }
+
+      /* MENU */
+      .menu {
+        background: #0b468c;
+        color: white;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 40px;
+        height: 50px;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+      }
+      .menu ul {
+        list-style: none;
+        display: flex;
+        gap: 30px;
+        margin: 0;
+        padding: 0;
+        height: 100%;
+      }
+      .menu ul li {
+        font-weight: 600;
+        font-size: 14px;
+        height: 100%;
+        box-sizing: border-box;
+      }
+      .menu ul li a {
+        text-decoration: none;
+        color: inherit;
+        display: flex;
+        align-items: center;
+        height: 100%;
+        transition: 0.2s;
+      }
+      .menu ul li a:hover {
+        color: #fbbc04;
+      }
+      .menu ul li.activo {
+        color: #fbbc04;
+        border-bottom: 4px solid #fbbc04;
+        padding-top: 4px;
+      }
+      .contacto {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        font-size: 14px;
+      }
+      .contacto a {
+        display: flex;
+        align-items: center;
+        color: white;
+        text-decoration: none;
+      }
+      .icono {
+        width: 18px;
+        margin-right: 6px;
+      }
+      .separador {
+        width: 1px;
+        height: 20px;
+        background-color: rgba(255, 255, 255, 0.5);
+      }
+
+      /* CONTENIDO */
+      .contenido-principal {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+      }
+      .encabezado-pagina {
+        background: #0d6efd;
+        color: white;
+        text-align: center;
+        padding: 40px 20px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      }
+      .encabezado-pagina h1 {
+        margin: 0;
+        font-size: 32px;
+        font-weight: 800;
+        font-style: italic;
+      }
+
+      .contenedor-contacto {
+        max-width: 900px;
+        margin: 50px auto;
+        padding: 0 20px;
+        display: flex;
+        gap: 40px;
+        z-index: 2;
+        flex-wrap: wrap;
+      }
+
+      .info-contacto {
+        flex: 1;
+        min-width: 300px;
+        background: white;
+        padding: 30px;
+        border-radius: 12px;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+        border-top: 6px solid #0d6efd;
+      }
+      .info-contacto h2 {
+        color: #0b468c;
+        margin-top: 0;
+      }
+      .info-contacto p {
+        color: #555;
+        margin-bottom: 20px;
+        line-height: 1.5;
+      }
+      .info-item {
+        display: flex;
+        align-items: center;
+        margin-bottom: 15px;
+        color: #444;
+        font-weight: 500;
+      }
+      .info-item img {
+        width: 24px;
+        margin-right: 10px;
+        filter: brightness(0) saturate(100%) invert(20%) sepia(85%)
+          saturate(2035%) hue-rotate(204deg) brightness(96%) contrast(96%);
+      } /* Truco para pintar el icono de azul */
+
+      /* ----- NUEVO ESTILO PARA EL LOGO ----- */
+      .logo-contacto {
+        display: block;
+        max-width: 220px; /* Evita que sea gigantesco */
+        width: 100%; /* Se adapta a celulares si la pantalla es muy pequeña */
+        height: auto;
+        margin: 40px auto 0; /* Lo empuja hacia abajo y lo centra horizontalmente */
+      }
+
+      .formulario {
+        flex: 1;
+        min-width: 300px;
+        background: white;
+        padding: 30px;
+        border-radius: 12px;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+      }
+      .formulario input,
+      .formulario textarea {
+        width: 100%;
+        padding: 12px;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        box-sizing: border-box;
+        font-family: inherit;
+      }
+      .formulario textarea {
+        resize: vertical;
+        min-height: 120px;
+      }
+      .formulario button {
+        background: #0d6efd;
+        color: white;
+        border: none;
+        padding: 12px 20px;
+        border-radius: 6px;
+        font-size: 16px;
+        font-weight: bold;
+        cursor: pointer;
+        width: 100%;
+        transition: 0.3s;
+      }
+      .formulario button:hover {
+        background: #0b468c;
+      }
+
+      /* FOOTER */
+      .fondo-curvo {
+        background: #022359;
+        height: 60px;
+        border-radius: 100% 100% 0 0 / 100% 100% 0 0;
+        margin-top: auto;
+        position: relative;
+        z-index: 1;
+      }
+      .footer {
+        background: #022359;
+        color: white;
+        padding: 20px 40px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 13px;
+        position: relative;
+        z-index: 2;
+      }
+      .redes {
+        display: flex;
+        gap: 12px;
+        align-items: center;
+      }
+      .redes img {
+        width: 30px;
+        height: 30px;
+        cursor: pointer;
+        border-radius: 50%;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="menu">
+      <ul>
+        <li><a href="index.html">INICIO</a></li>
+        <li><a href="servicios.html">SERVICIOS</a></li>
+        <li><a href="nosotros.html">NOSOTROS</a></li>
+        <li class="activo"><a href="contacto.html">CONTACTO</a></li>
+      </ul>
+      <div class="contacto">
+        <a href="https://wa.me/523221507087"
+          ><img src="images/WhatsApp.webp" class="icono" alt="WA" /> +52 322 150
+          7087</a
+        >
+        <div class="separador"></div>
+        <a href="mailto:conexionpv@gmail.com"
+          ><img
+            src="images/email.webp"
+            class="icono"
+            alt="Email"
+            style="filter: brightness(0) invert(1)"
+          />
+          conexionpv@gmail.com</a
+        >
+      </div>
+    </div>
+
+    <div class="contenido-principal">
+      <div class="encabezado-pagina"><h1>Contáctanos</h1></div>
+
+      <div class="contenedor-contacto">
+        <div class="info-contacto">
+          <h2>¡Hablemos de tu proyecto!</h2>
+          <p>
+            Solicita tu presupuesto sin compromiso. Estamos listos para ayudarte
+            con tus necesidades tecnológicas y de seguridad.
+          </p>
+
+          <div class="info-item">
+            <img src="images/WhatsApp.webp" alt="Teléfono" />
+            +52 322 150 7087
+          </div>
+          <div class="info-item">
+            <img src="images/email.webp" alt="Email" />
+            conexionpv@gmail.com
+          </div>
+          <div class="info-item">
+            <img src="images/email.png" alt="Ubicación" />
+            Puerto Vallarta y alrededores
+          </div>
+
+          <img
+            src="images/ConexionPV.png"
+            class="logo-contacto"
+            alt="Logo ConexiónPV"
+          />
+        </div>
+
+        <div class="formulario">
+          <form action="#" method="POST">
+            <input type="text" placeholder="Tu Nombre" required />
+            <input type="email" placeholder="Tu Correo Electrónico" required />
+            <input
+              type="text"
+              placeholder="Asunto (Ej. Cotización de cámaras)"
+            />
+            <textarea
+              placeholder="¿En qué podemos ayudarte?"
+              required
+            ></textarea>
+            <button type="submit">Enviar Mensaje</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div class="fondo-curvo"></div>
+    <div class="footer">
+      <div>© 2026 ConexiónPV - Todos los derechos reservados.</div>
+      <div class="redes">
+        <img src="images/Facebook.png" alt="Facebook" />
+        <a href="https://wa.me/523221507087">
+          <img src="images/WhatsApp.webp" class="icono" alt="WA" />
+        </a>
+      </div>
+    </div>
+  </body>
+</html>

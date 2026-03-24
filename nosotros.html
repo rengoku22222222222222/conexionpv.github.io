@@ -1,0 +1,393 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Nosotros - ConexiónPV</title>
+    <link rel="icon" href="images/logo.png" type="image/png" />
+    <style>
+      /* ---------- ESTILOS GLOBALES ---------- */
+      html {
+        background-color: #022359;
+      }
+      body {
+        margin: 0;
+        font-family: "Segoe UI", Arial, sans-serif;
+        background: #f7f9fc;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+      }
+
+      /* ---------- MENU ---------- */
+      .menu {
+        background: #0b468c;
+        color: white;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 40px;
+        height: 50px;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+      }
+      .menu ul {
+        list-style: none;
+        display: flex;
+        gap: 30px;
+        margin: 0;
+        padding: 0;
+        height: 100%;
+      }
+      .menu ul li {
+        font-weight: 600;
+        font-size: 14px;
+        height: 100%;
+        box-sizing: border-box;
+      }
+      .menu ul li a {
+        text-decoration: none;
+        color: inherit;
+        display: flex;
+        align-items: center;
+        height: 100%;
+        transition: 0.2s;
+      }
+      .menu ul li a:hover {
+        color: #fbbc04;
+      }
+      .menu ul li.activo {
+        color: #fbbc04;
+        border-bottom: 4px solid #fbbc04;
+        padding-top: 4px;
+      }
+      .contacto {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        font-size: 14px;
+      }
+      .contacto a {
+        display: flex;
+        align-items: center;
+        color: white;
+        text-decoration: none;
+      }
+      .icono {
+        width: 18px;
+        margin-right: 6px;
+      }
+      .separador {
+        width: 1px;
+        height: 20px;
+        background-color: rgba(255, 255, 255, 0.5);
+      }
+
+      /* ---------- CONTENIDO PRINCIPAL ---------- */
+      .contenido-principal {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+      }
+      .encabezado-pagina {
+        background: #0d6efd;
+        color: white;
+        text-align: center;
+        padding: 40px 20px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      }
+      .encabezado-pagina h1 {
+        margin: 0;
+        font-size: 32px;
+        font-weight: 800;
+        font-style: italic;
+      }
+
+      /* SECCIÓN: QUIÉNES SOMOS */
+      .contenedor-nosotros {
+        max-width: 900px;
+        margin: 60px auto 40px;
+        padding: 0 20px;
+        display: flex;
+        gap: 40px;
+        align-items: center;
+        z-index: 2;
+        flex-wrap: wrap;
+      }
+      .texto-nosotros {
+        flex: 1;
+        min-width: 300px;
+      }
+      .texto-nosotros h2 {
+        color: #0b468c;
+        font-size: 28px;
+        margin-top: 0;
+        font-style: italic;
+      }
+      .texto-nosotros p {
+        color: #555;
+        font-size: 16px;
+        line-height: 1.6;
+        margin-bottom: 20px;
+      }
+      .imagen-nosotros {
+        flex: 1;
+        min-width: 300px;
+        background: white;
+        padding: 10px;
+        border-radius: 12px;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+      }
+      .imagen-nosotros img {
+        width: 100%;
+        border-radius: 8px;
+        display: block;
+      }
+
+      /* SECCIÓN: GALERÍA DE FOTOS */
+      .seccion-galeria {
+        max-width: 900px;
+        margin: 0 auto 60px;
+        padding: 0 20px;
+        text-align: center;
+        z-index: 2;
+        width: 100%;
+        box-sizing: border-box;
+      }
+      .seccion-galeria h2 {
+        color: #0b468c;
+        font-size: 28px;
+        margin-bottom: 30px;
+        font-style: italic;
+      }
+
+      .galeria-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+      }
+
+      .galeria-item {
+        overflow: hidden;
+        border-radius: 12px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        background: #fff;
+        border-bottom: 4px solid #0d6efd; /* Pequeño detalle azul en la foto */
+      }
+
+      .galeria-item img {
+        width: 100%;
+        height: 200px; /* Altura fija para que todas las fotos se vean parejas */
+        object-fit: cover; /* Recorta la imagen sin deformarla para que llene el espacio */
+        display: block;
+        transition: transform 0.3s ease;
+      }
+
+      .galeria-item:hover img {
+        transform: scale(1.08); /* Efecto de zoom al pasar el ratón */
+      }
+
+      /* ---------- FOOTER Y FONDO CURVO ---------- */
+      .fondo-curvo {
+        background: #022359;
+        height: 60px;
+        border-radius: 100% 100% 0 0 / 100% 100% 0 0;
+        margin-top: auto;
+        position: relative;
+        z-index: 1;
+      }
+      .footer {
+        background: #022359;
+        color: white;
+        padding: 20px 40px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 13px;
+        position: relative;
+        z-index: 2;
+      }
+      .redes {
+        display: flex;
+        gap: 12px;
+        align-items: center;
+      }
+      .redes img {
+        width: 30px;
+        height: 30px;
+        cursor: pointer;
+        border-radius: 50%;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="menu">
+      <ul>
+        <li><a href="index.html">INICIO</a></li>
+        <li><a href="servicios.html">SERVICIOS</a></li>
+        <li class="activo"><a href="nosotros.html">NOSOTROS</a></li>
+        <li><a href="contacto.html">CONTACTO</a></li>
+      </ul>
+      <div class="contacto">
+        <a href="https://wa.me/523221507087"
+          ><img src="images/WhatsApp.webp" class="icono" alt="WA" /> +52 322 150
+          7087</a
+        >
+        <div class="separador"></div>
+        <a href="mailto:conexionpv@gmail.com"
+          ><img
+            src="images/email.webp"
+            class="icono"
+            alt="Email"
+            style="filter: brightness(0) invert(1)"
+          />
+          conexionpv@gmail.com</a
+        >
+      </div>
+    </div>
+
+    <div class="contenido-principal">
+      <div class="encabezado-pagina"><h1>Quiénes Somos</h1></div>
+
+      <div class="contenedor-nosotros">
+        <div class="texto-nosotros">
+          <h2>Expertos en Tecnología en Puerto Vallarta</h2>
+          <p>
+            En <strong>ConexiónPV</strong> somos un equipo de profesionales
+            apasionados por la tecnología, la seguridad y las
+            telecomunicaciones. Nuestro objetivo es brindar soluciones
+            integrales, rápidas y confiables a hogares y empresas.
+          </p>
+          <p>
+            Nos enorgullece ofrecer un servicio al cliente excepcional,
+            entendiendo las necesidades específicas de cada proyecto para
+            garantizar instalaciones eléctricas seguras, redes estables y
+            sistemas de videovigilancia de vanguardia.
+          </p>
+          <p>
+            Tu tranquilidad y la operatividad de tus equipos son nuestra
+            prioridad. ¡Trabajemos juntos!
+          </p>
+        </div>
+        <div class="imagen-nosotros">
+          <img src="images/Oscar.png" alt="Equipo Conexión PV" />
+        </div>
+      </div>
+
+      <div class="seccion-galeria">
+        <h2>Nuestro Trabajo</h2>
+        <div class="galeria-grid">
+          <div class="galeria-item">
+            <img
+              src="images/mantenimiento1.jpeg"
+              alt="Instalación de cámaras"
+            />
+          </div>
+
+          <div class="galeria-item">
+            <img src="images/mantenimiento.png" alt="Cableado estructurado" />
+          </div>
+
+          <div class="galeria-item">
+            <img src="images/mantenimiento.jpeg" alt="Mantenimiento de PC" />
+          </div>
+
+          <div class="galeria-item">
+            <img src="images/mantenimiento2.jpeg" alt="Instalación de redes" />
+          </div>
+
+          <div class="galeria-item">
+            <img src="images/redes.jpeg" alt="Soporte técnico" />
+          </div>
+
+          <div class="galeria-item">
+            <img src="images/redes1.jpeg" alt="Configuración de servidores" />
+          </div>
+          <div class="galeria-item">
+            <img src="images/pc.jpeg" alt="Instalación de redes" />
+          </div>
+
+          <div class="galeria-item">
+            <img src="images/equipo.jpeg" alt="Soporte técnico" />
+          </div>
+
+          <div class="galeria-item">
+            <img src="images/utp.jpeg" alt="Configuración de servidores" />
+          </div>
+
+          <div class="galeria-item">
+            <img src="images/img0.jpeg" alt="Configuración de servidores" />
+          </div>
+
+          <div class="galeria-item">
+            <img src="images/img1.jpeg" alt="Configuración de servidores" />
+          </div>
+
+          <div class="galeria-item">
+            <img src="images/img2.jpeg" alt="Configuración de servidores" />
+          </div>
+
+          <div class="galeria-item">
+            <img src="images/img3.jpeg" alt="Configuración de servidores" />
+          </div>
+
+          <div class="galeria-item">
+            <img src="images/img4.jpeg" alt="Configuración de servidores" />
+          </div>
+
+          <div class="galeria-item">
+            <img src="images/img5.jpeg" alt="Configuración de servidores" />
+          </div>
+
+          <div class="galeria-item">
+            <img src="images/img6.jpeg" alt="Configuración de servidores" />
+          </div>
+
+          <div class="galeria-item">
+            <img src="images/img7.jpeg" alt="Configuración de servidores" />
+          </div>
+
+          <div class="galeria-item">
+            <img src="images/img8.jpeg" alt="Configuración de servidores" />
+          </div>
+
+          <div class="galeria-item">
+            <img src="images/img9.jpeg" alt="Configuración de servidores" />
+          </div>
+
+          <div class="galeria-item">
+            <img src="images/img10.jpeg" alt="Configuración de servidores" />
+          </div>
+
+          <div class="galeria-item">
+            <img src="images/img11.jpeg" alt="Configuración de servidores" />
+          </div>
+
+          <div class="galeria-item">
+            <img src="images/img12.jpeg" alt="Configuración de servidores" />
+          </div>
+
+          <div class="galeria-item">
+            <img src="images/img13.jpg" alt="Configuración de servidores" />
+          </div>
+
+          <div class="galeria-item">
+            <img src="images/img14.jpg" alt="Configuración de servidores" />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="fondo-curvo"></div>
+    <div class="footer">
+      <div>© 2026 ConexiónPV - Todos los derechos reservados.</div>
+      <div class="redes">
+        <img src="images/Facebook.png" alt="Facebook" />
+        <a href="https://wa.me/523221507087">
+          <img src="images/WhatsApp.webp" class="icono" alt="WA" />
+        </a>
+      </div>
+    </div>
+  </body>
+</html>
